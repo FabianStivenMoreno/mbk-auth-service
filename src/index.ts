@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import logger from './services/logger/loggerService';
 import authRoutes from './routes/authRoutes';
 
 dotenv.config()
@@ -21,8 +22,8 @@ const port = process.env.PUERTO || 5000
 
 if(process.env.NODE_ENV !== 'test'){
   app.listen(port, () => {
-    console.log(`Servidor escuchando en el puerto ${port}`)
-    console.log(`API disponible en: http://localhost:${port}${raiz}`);
+    logger.info(`Servidor escuchando en el puerto ${port}`)
+    logger.info(`API disponible en: http://localhost:${port}${raiz}`);
   })
 }
 

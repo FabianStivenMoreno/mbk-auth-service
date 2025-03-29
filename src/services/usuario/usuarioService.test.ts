@@ -1,8 +1,8 @@
-import { pool } from '../config/db';
-import { buscarUsuarioPorUsername, crearUsuario } from '../services/usuarioService';
+import { pool } from '../../config/db';
+import { buscarUsuarioPorUsername, crearUsuario } from '../usuario/usuarioService';
 import bcrypt from 'bcryptjs';
 
-jest.mock('../config/db', () => ({
+jest.mock('../../config/db', () => ({
     pool: {
         query: jest.fn()
     }
