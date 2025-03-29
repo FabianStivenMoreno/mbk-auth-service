@@ -14,7 +14,7 @@ describe('User Service', () => {
     });
 
     test('Debería buscar usuario por username', async () => {
-        const mockUser = [{ id: 1, username: 'testUser', password: 'hashedPassword', role: 'user' }];
+        const mockUser = [{ id: 1, username: 'testUser', password: 'hashedPassword', correo: 'mail@mail.com', role: 'user' }];
         (pool.query as jest.Mock).mockResolvedValue([mockUser]);
 
         const user = await buscarUsuarioPorUsername('testUser');
@@ -34,11 +34,11 @@ describe('User Service', () => {
         const hashSpy = jest.spyOn(bcrypt, 'hash').mockImplementation(() => 'hashedPassword');
         (pool.query as jest.Mock).mockResolvedValue([{ affectedRows: 1 }]);
 
-        await crearUsuario('newUser', 'password123', 'admin');
+        await crearUsuario('newUser', 'password123', 'mail@mail.com', 'admin');
         expect(hashSpy).toHaveBeenCalledWith('password123', 10);
         expect(pool.query).toHaveBeenCalledWith(
-            'INSERT INTO usuarios (username, password, role) VALUES (?, ?, ?)',
-            ['newUser', 'hashedPassword', 'admin']
+            'INSERT INTO usuarios (username, password, correo, role) VALUES (?, ?, ?, ?)',
+            ['newUser', 'hashedPassword', 'mail@mail.com', 'admin']
         );
     });
 });

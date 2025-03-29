@@ -7,7 +7,7 @@ export const buscarUsuarioPorUsername = async (username: string): Promise<Usuari
     return rows.length ? rows[0] : null;
 };
 
-export const crearUsuario = async (username: string, password: string, role: 'admin' | 'user') => {
+export const crearUsuario = async (username: string, password: string, correo:string, role: 'admin' | 'user') => {
     const hashPass = await bcrypt.hash(password, 10);
-    await pool.query('INSERT INTO usuarios (username, password, role) VALUES (?, ?, ?)', [username, hashPass, role]);
+    await pool.query('INSERT INTO usuarios (username, password, correo, role) VALUES (?, ?, ?, ?)', [username, hashPass, correo, role]);
 };
