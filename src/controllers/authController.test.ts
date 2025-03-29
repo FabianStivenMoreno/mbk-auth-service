@@ -1,9 +1,9 @@
 import request from 'supertest';
 import app from '../index';
 import jwt from 'jsonwebtoken';
-import * as userService from '../services/usuarioService';
+import * as userService from '../services/usuario/usuarioService';
 
-jest.mock('../services/usuarioService')
+jest.mock('../services/usuario/usuarioService')
 
 const mockBodyRequestRegistro = {
     username: 'testuser',
