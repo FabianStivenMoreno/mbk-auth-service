@@ -8,5 +8,6 @@ export const generarJwtSchema = Joi.object({
 export const registroSchema = Joi.object({
     username: Joi.string().min(3).max(30).required(),
     password: Joi.string().min(6).required(),
+    correo: Joi.string().required(),
     role: Joi.string().valid('admin', 'user').required()
 });

@@ -32,7 +32,7 @@ export const registro = async (req: Request, res: Response): Promise<any> => {
             return res.status(400).json({ message: error.details[0].message });
         }
 
-        const { username, password, role } = req.body;
+        const { username, password, correo, role } = req.body;
         
         // Verificar si el usuario ya existe
         const existingUser = await buscarUsuarioPorUsername(username);
@@ -40,7 +40,7 @@ export const registro = async (req: Request, res: Response): Promise<any> => {
             return res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
         }
         
-        await crearUsuario(username, password, role);
+        await crearUsuario(username, password, correo, role);
         return res.status(201).json({ message: 'Usuario registrado exitosamente' });
     } catch (error) {
         return res.status(500).json({ message: 'Error en el servidor' });
