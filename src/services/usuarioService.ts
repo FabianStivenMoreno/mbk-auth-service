@@ -1,6 +1,6 @@
 import { pool } from '../config/db';
 import { Usuario } from '../models/usuario';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const buscarUsuarioPorUsername = async (username: string): Promise<Usuario | null> => {
     const [rows]: any = await pool.query('SELECT * FROM usuarios WHERE username = ?', [username]);

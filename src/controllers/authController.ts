@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { buscarUsuarioPorUsername, crearUsuario } from '../services/usuarioService';
 import { generarJwtSchema, registroSchema } from '../models/validaciones/authSchema';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const generarJwt = async (req: Request, res: Response): Promise<any> => {
     try {
