@@ -7,19 +7,19 @@ jest.mock('../services/usuario/usuarioService')
 
 const mockBodyRequestRegistro = {
     username: 'testuser',
-    password: 'password123',
+    password: 'password123A*',
     correo: 'mail@mail.com',
     role: 'user'
 }
 
 const mockBodyRequestRegistroErrorEstructura = {
     username: 'testuser',
-    password: 'password123'
+    password: 'password123A*'
 }
 
 const mockBodyRequestGenerarJwtOk = {
     username: 'testuser',
-    password: '123456'
+    password: '123456A*'
 }
 
 const mockBodyRequestGenerarJwtErrorEstructura = {
@@ -28,13 +28,13 @@ const mockBodyRequestGenerarJwtErrorEstructura = {
 
 const mockBodyRequestGenerarJwtErrorCredenciales = {
     username: 'testuser',
-    password: '654321'
+    password: '654321A*'
 }
 
 const responseBdBuscarUsuario = {
     id: 1,
     username: 'testuser',
-    password: '$2b$10$tEUw.ubjHeGqf/l5LTLNwOh0ZTFA1P70rZeklnFt8VT7gM.nKMtsS',
+    password: '$2b$10$MscYnAQsp2GQK43xMDj91u1C97elbGsG.jgfDGIfe.inRTHlNv23y',
     correo: 'mail@mail.com',
     role: 'user'
 }

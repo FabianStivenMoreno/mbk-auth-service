@@ -22,7 +22,7 @@ export const generarJwt = async (req: Request, res: Response): Promise<any> => {
             return res.status(401).json({ message: 'Credenciales inválidas' });
         }
 
-        const token = jwt.sign({ username, role: user.role }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
+        const token = jwt.sign({ username, role: user.role, id: user.id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
         logger.info(`AuthController:generarJwt - Token generado para el usuario: ${username}`);
         logger.debug(`AuthController:generarJwt - Fin`);
 
