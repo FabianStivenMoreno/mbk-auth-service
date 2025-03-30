@@ -48,7 +48,7 @@ npm start
 ## 🛠 Pruebas
 Ejecuta los tests con:
 ```sh
-npm test
+npm run test
 ```
 
 ## 📖 Documentación API
