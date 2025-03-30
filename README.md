@@ -6,7 +6,7 @@ Este servicio de autenticación está construido con **Node.js**, **Express**, *
 
 ### 1. Clonar el repositorio
 ```sh
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/FabianStivenMoreno/mbk-auth-service.git
 cd mbk-auth-service
 ```
 
