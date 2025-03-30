@@ -20,12 +20,12 @@ app.use(`${raiz}/authenticate`, authRoutes);
 
 const port = process.env.PUERTO || 5000
 
-if(process.env.NODE_ENV !== 'test'){
-  app.listen(port, () => {
+const server = app.listen(port, () => {
     logger.info(`Servidor escuchando en el puerto ${port}`)
     logger.info(`API disponible en: http://localhost:${port}${raiz}`);
   })
-}
+
 
 
 export default app;
+export { server };
