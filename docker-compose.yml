@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  mysql:
+    image: 'mysql:8.0'
+    container_name: auth_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: prueba_coordinadora
+      MYSQL_USER: authService
+      MYSQL_PASSWORD: Auth1234
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/scripts/iniciarDb.sql:/docker-entrypoint-initdb.d/iniciarDb.sql
+
+  app:
+    build: .
+    container_name: auth_service
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PUERTO: "3000"
+      ROOT_PATH: "/auth/v1"
+      LOGGER_LEVEL: "debug"
+      NODE_ENV: "dev"
+      DB_HOST: "mysql"
+      DB_PORT: "3306"  
+      DB_USER: "root"
+      DB_PASS: "pass"
+      DB_NAME: "prueba_coordinadora"
+      JWT_SECRET: "supersecreto"
+    ports:
+      - '3000:3000'
+
+volumes:
+  mysql_data:
