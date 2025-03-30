@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import logger from './services/logger/loggerService';
 import authRoutes from './routes/authRoutes';
+import { setupSwagger } from "./config/swagger";
 
 dotenv.config()
 
@@ -15,8 +16,11 @@ app.use(morgan('dev'));
 
 const raiz = process.env.ROOT_PATH || '/'
 
+// Configuracion swagger
+setupSwagger(app); 
+
 // Configurar las rutas
-app.use(`${raiz}/authenticate`, authRoutes);
+app.use(`${raiz}/authenticate`, authRoutes);                                     
 
 const port = process.env.PUERTO || 5000
 
