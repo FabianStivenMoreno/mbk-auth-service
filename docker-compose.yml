@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   mysql:
     image: 'mysql:8.0'
@@ -9,11 +10,14 @@ services:
       MYSQL_DATABASE: prueba_coordinadora
       MYSQL_USER: authService
       MYSQL_PASSWORD: Auth1234
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
       - '3306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
       - ./src/scripts/iniciarDb.sql:/docker-entrypoint-initdb.d/iniciarDb.sql
+    networks:
+      - coordinadora
 
   app:
     build: .
@@ -27,13 +31,19 @@ services:
       LOGGER_LEVEL: "debug"
       NODE_ENV: "dev"
       DB_HOST: "mysql"
-      DB_PORT: "3306"  
+      DB_PORT: "3306"
       DB_USER: "root"
       DB_PASS: "pass"
       DB_NAME: "prueba_coordinadora"
       JWT_SECRET: "supersecreto"
     ports:
       - '3000:3000'
+    networks:
+      - coordinadora
 
 volumes:
   mysql_data:
+
+networks:
+  coordinadora:
+    external: true

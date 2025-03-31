@@ -40,6 +40,10 @@ Esta opción levanta el servicio junto con una instancia de MySQL en contenedore
 
 ### ✅ **Requisitos previos**
 - Tener instalado [Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/install/).
+- Si no se ha creado la red se debe crear red con docker ejecutando el siguiente comando
+```sh
+docker network create coordinadora
+```
 
 ### ▶ **1. Iniciar contenedores**
 ```sh
@@ -55,6 +59,7 @@ docker logs -f auth_service
 El servicio estará disponible en:
 - 🔗 **http://localhost:3000/auth/v1**
 - 🔗 **Documentación Swagger:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- En la carpeta docs hay una colección para probar desde postman los endpoints desarrollados
 
 ### ▶ **4. Detener y eliminar contenedores**
 ```sh
@@ -124,6 +129,7 @@ http://localhost:3000/api-docs
 - Si cambias los valores de conexión a la base de datos en `.env`, actualiza tu configuración en `docker-compose.yml` si usas Docker.
 - Para depuración, usa `docker-compose logs -f` o `docker logs -f auth_service`.
 - Si tienes problemas con MySQL en Docker, asegúrate de que el puerto **3306** no esté ocupado en tu máquina.
+- VIDEO [Explicacion flujo](https://www.youtube.com/watch?v=Ggi6Lpt99ME)
 
 ---
 
