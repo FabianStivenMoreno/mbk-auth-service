@@ -124,6 +124,7 @@ http://localhost:3000/api-docs
 - Si cambias los valores de conexión a la base de datos en `.env`, actualiza tu configuración en `docker-compose.yml` si usas Docker.
 - Para depuración, usa `docker-compose logs -f` o `docker logs -f auth_service`.
 - Si tienes problemas con MySQL en Docker, asegúrate de que el puerto **3306** no esté ocupado en tu máquina.
+- VIDEO [Explicacion flujo](https://www.youtube.com/watch?v=Ggi6Lpt99ME)
 
 ---
 
