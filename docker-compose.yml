@@ -10,6 +10,7 @@ services:
       MYSQL_DATABASE: prueba_coordinadora
       MYSQL_USER: authService
       MYSQL_PASSWORD: Auth1234
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
       - '3306:3306'
     volumes:
