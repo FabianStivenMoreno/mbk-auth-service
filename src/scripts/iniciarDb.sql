@@ -107,3 +107,53 @@ CREATE TABLE paquetes (
     FOREIGN KEY (envio_id) REFERENCES envios(id),
     FOREIGN KEY (ruta_id) REFERENCES rutas(id)
 );
+
+-- ===============================================================
+-- Inserción de datos 
+-- ===============================================================
+
+-- ===============================================================
+-- Poblar tabla de ciudades
+-- ===============================================================
+INSERT INTO ciudades (nombre, pais)
+VALUES
+  ('Bogotá', 'Colombia'),
+  ('Medellín', 'Colombia'),
+  ('Cali', 'Colombia'),
+  ('Barranquilla', 'Colombia'),
+  ('Cartagena', 'Colombia');
+
+-- ===============================================================
+-- Poblar tabla de rutas
+-- ===============================================================
+INSERT INTO rutas (origen_ciudad_id, destino_ciudad_id)
+VALUES
+  (1, 2),  -- Ruta Bogotá -> Medellín
+  (1, 3),  -- Ruta Bogotá -> Cali
+  (2, 4),  -- Ruta Medellín -> Barranquilla
+  (3, 5),  -- Ruta Cali -> Cartagena
+  (4, 5);  -- Ruta Barranquilla -> Cartagena
+
+-- ===============================================================
+-- Poblar tabla de transportistas
+-- ===============================================================
+INSERT INTO transportistas (nombre, telefono, estado, ciudad_id)
+VALUES
+  ('Carlos Pérez', '3216549870', 'Disponible', 1),  -- Bogotá
+  ('Andrea Gómez', '3114567890', 'Disponible', 2),  -- Medellín
+  ('Luis Martínez', '3001234567', 'Disponible', 3), -- Cali
+  ('Ana Ramírez', '3229876540', 'Disponible', 4),   -- Barranquilla
+  ('Pedro Ruiz', '3204567891', 'Disponible', 5);    -- Cartagena
+
+-- ===============================================================
+-- Poblar tabla de vehículos
+-- ===============================================================
+INSERT INTO vehiculos (
+  tipo, capacidad_kg_original, capacidad_alto_metros, capacidad_ancho_metros, capacidad_profundidad_metros, volumen_total_m3, matricula, estado, ciudad_id, capacidad_restante_kg, capacidad_restante_volumen_m3
+)
+VALUES
+  ('Camión', 5000, 2.5, 2.5, 6, 37.5, 'ABC123', 'Disponible', 1, 5000, 37.5),  -- Bogotá
+  ('Furgoneta', 2000, 2, 2, 4, 16, 'DEF456', 'Disponible', 2, 2000, 16),       -- Medellín
+  ('Moto', 100, 1.5, 0.6, 0.8, 0.72, 'GHI789', 'Disponible', 3, 100, 0.72),    -- Cali
+  ('Camión', 8000, 3, 2.8, 7, 58.8, 'JKL012', 'Disponible', 4, 8000, 58.8),    -- Barranquilla
+  ('Furgoneta', 2500, 2.2, 2, 4.5, 19.8, 'MNO345', 'Disponible', 5, 2500, 19.8); -- Cartagena
