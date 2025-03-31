@@ -59,6 +59,7 @@ docker logs -f auth_service
 El servicio estará disponible en:
 - 🔗 **http://localhost:3000/auth/v1**
 - 🔗 **Documentación Swagger:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- En la carpeta docs hay una colección para probar desde postman los endpoints desarrollados
 
 ### ▶ **4. Detener y eliminar contenedores**
 ```sh
